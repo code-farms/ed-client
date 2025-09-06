@@ -10,8 +10,9 @@ import {
   Split,
   Archive
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { FeatureCard } from '@/components/FeatureCard';
-import { UploadModal } from '@/components/UploadModal';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 const features = [
   {
@@ -19,78 +20,91 @@ const features = [
     description: 'Convert PDF documents to editable Word files quickly and accurately.',
     icon: FileText,
     featureKey: 'pdfToWord',
+    path: '/pdf-to-word',
   },
   {
     title: 'PDF to PowerPoint',
     description: 'Transform PDF files into editable PowerPoint presentations.',
     icon: Presentation,
     featureKey: 'pdfToPpt',
+    path: '/pdf-to-ppt',
   },
   {
     title: 'PDF to Excel',
     description: 'Extract tables and data from PDFs into Excel spreadsheets.',
     icon: FileSpreadsheet,
     featureKey: 'pdfToExcel',
+    path: '/pdf-to-excel',
   },
   {
     title: 'PDF to Image',
     description: 'Convert PDF pages to high-quality image formats (JPG, PNG).',
     icon: FileImage,
     featureKey: 'pdfToImage',
+    path: '/pdf-to-image',
   },
   {
     title: 'PDF to HTML',
     description: 'Convert PDF documents to clean, responsive HTML code.',
     icon: Code,
     featureKey: 'pdfToHtml',
+    path: '/pdf-to-html',
   },
   {
     title: 'Word to PDF',
     description: 'Convert Word documents to professional PDF format.',
     icon: FileText,
     featureKey: 'wordToPdf',
+    path: '/word-to-pdf',
   },
   {
     title: 'PowerPoint to PDF',
     description: 'Transform PowerPoint presentations into PDF documents.',
     icon: Presentation,
     featureKey: 'pptToPdf',
+    path: '/ppt-to-pdf',
   },
   {
     title: 'Excel to PDF',
     description: 'Convert Excel spreadsheets to PDF with formatting preserved.',
     icon: FileSpreadsheet,
     featureKey: 'excelToPdf',
+    path: '/excel-to-pdf',
   },
   {
     title: 'Image to PDF',
     description: 'Combine multiple images into a single PDF document.',
     icon: Image,
     featureKey: 'imageToPdf',
+    path: '/image-to-pdf',
   },
   {
     title: 'HTML to PDF',
     description: 'Convert web pages and HTML files to PDF format.',
     icon: Code,
     featureKey: 'htmlToPdf',
+    path: '/html-to-pdf',
   },
   {
     title: 'Merge PDF',
     description: 'Combine multiple PDF files into one document seamlessly.',
     icon: Merge,
     featureKey: 'mergePdf',
+    path: '/merge-pdf',
   },
   {
     title: 'Split PDF',
     description: 'Extract specific pages or split PDFs into separate files.',
     icon: Split,
     featureKey: 'splitPdf',
+    path: '/split-pdf',
   },
   {
     title: 'Compress PDF',
     description: 'Reduce PDF file size while maintaining quality.',
     icon: Archive,
     featureKey: 'compressPdf',
+    path: '/compress-pdf',
   },
 ];
 
@@ -120,6 +134,7 @@ export const Home: React.FC = () => {
               <a href="#contact" className="text-muted-foreground hover:text-primary transition-colors">
                 Contact
               </a>
+              <ThemeToggle />
             </nav>
           </div>
         </div>
@@ -170,13 +185,18 @@ export const Home: React.FC = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {features.map((feature) => (
-                  <FeatureCard
+                  <Link
                     key={feature.featureKey}
-                    title={feature.title}
-                    description={feature.description}
-                    icon={feature.icon}
-                    featureKey={feature.featureKey}
-                  />
+                    to={feature.path}
+                    className="block hover:scale-105 transition-transform"
+                  >
+                    <FeatureCard
+                      title={feature.title}
+                      description={feature.description}
+                      icon={feature.icon}
+                      featureKey={feature.featureKey}
+                    />
+                  </Link>
                 ))}
               </div>
             </div>
@@ -197,58 +217,6 @@ export const Home: React.FC = () => {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-border bg-background py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="space-y-4">
-              <div className="flex items-center space-x-2">
-                <div className="w-6 h-6 bg-gradient-primary rounded-lg flex items-center justify-center">
-                  <FileText className="w-4 h-4 text-primary-foreground" />
-                </div>
-                <span className="font-bold text-foreground">EsyDocs</span>
-              </div>
-              <p className="text-muted-foreground text-sm">
-                Your go-to platform for document conversion and manipulation.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="font-semibold text-foreground mb-4">Features</h3>
-              <ul className="space-y-2 text-sm">
-                <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">PDF Converter</a></li>
-                <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Merge & Split</a></li>
-                <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Compress Files</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="font-semibold text-foreground mb-4">Support</h3>
-              <ul className="space-y-2 text-sm">
-                <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Help Center</a></li>
-                <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Contact Us</a></li>
-                <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Privacy Policy</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="font-semibold text-foreground mb-4">Company</h3>
-              <ul className="space-y-2 text-sm">
-                <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">About Us</a></li>
-                <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Blog</a></li>
-                <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Careers</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-border mt-8 pt-8 text-center">
-            <p className="text-muted-foreground text-sm">
-              © 2024 EsyDocs. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
-
-      <UploadModal />
     </div>
   );
 };
