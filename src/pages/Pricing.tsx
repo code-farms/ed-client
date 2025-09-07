@@ -2,7 +2,6 @@ import React from 'react';
 import { Check, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { Layout } from '@/components/Layout';
 
 const pricingPlans = [
   {
@@ -55,7 +54,8 @@ const pricingPlans = [
 
 export const Pricing: React.FC = () => {
   return (
-    <Layout>
+    <div className='flex flex-col'>
+    
       <div className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
           Simple, Transparent{' '}
@@ -134,6 +134,6 @@ export const Pricing: React.FC = () => {
           </div>
         </div>
       </div>
-    </Layout>
+    </div>
   );
 };

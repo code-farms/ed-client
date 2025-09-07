@@ -1,26 +1,27 @@
-import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Layout } from '@/components/Layout';
-import { useToast } from '@/hooks/use-toast';
+import React, { useState } from "react";
+import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
 
 export const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -35,32 +36,37 @@ export const Contact: React.FC = () => {
         title: "Message Sent!",
         description: "We'll get back to you within 24 hours.",
       });
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      setFormData({ name: "", email: "", subject: "", message: "" });
     }, 2000);
   };
 
   return (
-    <Layout>
+    <div className="flex flex-col">
       <div className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-          Get in{' '}
+          Get in{" "}
           <span className="bg-gradient-primary bg-clip-text text-transparent">
             Touch
           </span>
         </h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-          Have a question or need help? We're here to assist you with any inquiries about EsyDocs.
+          Have a question or need help? We're here to assist you with any
+          inquiries about EsyDocs.
         </p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         {/* Contact Form */}
         <Card className="p-8">
-          <h2 className="text-2xl font-bold text-foreground mb-6">Send us a message</h2>
+          <h2 className="text-2xl font-bold text-foreground mb-6">
+            Send us a message
+          </h2>
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium text-foreground mb-2"
+                >
                   Name
                 </label>
                 <Input
@@ -74,7 +80,10 @@ export const Contact: React.FC = () => {
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-foreground mb-2"
+                >
                   Email
                 </label>
                 <Input
@@ -87,10 +96,12 @@ export const Contact: React.FC = () => {
                   placeholder="your@email.com"
                 />
               </div>
-            </div>
 
             <div>
-              <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
+              <label
+                htmlFor="subject"
+                className="block text-sm font-medium text-foreground mb-2"
+              >
                 Subject
               </label>
               <Input
@@ -105,7 +116,10 @@ export const Contact: React.FC = () => {
             </div>
 
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+              <label
+                htmlFor="message"
+                className="block text-sm font-medium text-foreground mb-2"
+              >
                 Message
               </label>
               <Textarea
@@ -119,9 +133,9 @@ export const Contact: React.FC = () => {
               />
             </div>
 
-            <Button 
-              type="submit" 
-              size="lg" 
+            <Button
+              type="submit"
+              size="lg"
               className="w-full"
               disabled={isSubmitting}
             >
@@ -176,7 +190,9 @@ export const Contact: React.FC = () => {
               </div>
               <div>
                 <h3 className="font-semibold text-foreground">Visit us</h3>
-                <p className="text-muted-foreground">123 Document Street, Tech City, TC 12345</p>
+                <p className="text-muted-foreground">
+                  123 Document Street, Tech City, TC 12345
+                </p>
               </div>
             </div>
             <p className="text-sm text-muted-foreground">
@@ -184,16 +200,16 @@ export const Contact: React.FC = () => {
             </p>
           </Card>
 
-          <div className="bg-gradient-card border border-border rounded-xl p-6">
+          {/* <div className="bg-gradient-card border border-border rounded-xl p-6">
             <h3 className="font-semibold text-foreground mb-3">Quick Help</h3>
             <div className="space-y-2 text-sm">
               <p className="text-muted-foreground">• Check our FAQ section for common questions</p>
               <p className="text-muted-foreground">• Visit our Help Center for detailed guides</p>
               <p className="text-muted-foreground">• Follow us on social media for updates</p>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
-    </Layout>
+    </div>
   );
 };

@@ -1,12 +1,12 @@
 import React from 'react';
 import { ArrowLeft, FileText } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { Layout } from '@/components/Layout';
+
 import { FileUpload } from '@/components/FileUpload';
 
 export const PdfToWord: React.FC = () => {
   return (
-    <Layout>
+    <>
       <div className="text-center mb-8">
         <div className="flex items-center justify-center gap-2 mb-4">
           <Link to="/" className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors">
@@ -39,6 +39,6 @@ export const PdfToWord: React.FC = () => {
         title="Choose PDF File"
         description="Drop your PDF file here or click to browse"
       />
-    </Layout>
+    </>
   );
 };
