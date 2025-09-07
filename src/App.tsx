@@ -20,6 +20,8 @@ import { HtmlToPdf } from "./pages/HtmlToPdf";
 import { MergePdf } from "./pages/MergePdf";
 import { SplitPdf } from "./pages/SplitPdf";
 import { CompressPdf } from "./pages/CompressPdf";
+import { Pricing } from "./pages/Pricing";
+import { Contact } from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -47,6 +49,8 @@ const App = () => (
               <Route path="/merge-pdf" element={<MergePdf />} />
               <Route path="/split-pdf" element={<SplitPdf />} />
               <Route path="/compress-pdf" element={<CompressPdf />} />
+              <Route path="/pricing" element={<Pricing />} />
+              <Route path="/contact" element={<Contact />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

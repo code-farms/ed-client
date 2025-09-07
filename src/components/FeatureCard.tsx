@@ -1,8 +1,6 @@
 import React from 'react';
 import { LucideIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useAppDispatch } from '@/hooks/redux';
-import { openUploadModal } from '@/store/uiSlice';
 
 interface FeatureCardProps {
   title: string;
@@ -15,14 +13,7 @@ export const FeatureCard: React.FC<FeatureCardProps> = ({
   title,
   description,
   icon: Icon,
-  featureKey,
 }) => {
-  const dispatch = useAppDispatch();
-
-  const handleSelectFile = () => {
-    dispatch(openUploadModal(featureKey));
-  };
-
   return (
     <div className="group">
       <div className="bg-gradient-card border border-border rounded-xl p-6 h-full flex flex-col items-center text-center hover:shadow-glow-card transform hover:scale-[1.02] transition-all duration-300">
@@ -39,12 +30,11 @@ export const FeatureCard: React.FC<FeatureCardProps> = ({
         </p>
         
         <Button
-          onClick={handleSelectFile}
-          variant="gradient"
+          variant="default"
           size="lg"
           className="w-full"
         >
-          Select File
+          Get Started
         </Button>
       </div>
     </div>

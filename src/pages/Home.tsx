@@ -12,7 +12,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { FeatureCard } from '@/components/FeatureCard';
-import { ThemeToggle } from '@/components/ThemeToggle';
+import { Layout } from '@/components/Layout';
 
 const features = [
   {
@@ -110,38 +110,9 @@ const features = [
 
 export const Home: React.FC = () => {
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b border-border bg-background/80 backdrop-blur-sm sticky top-0 z-40">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-                <FileText className="w-5 h-5 text-primary-foreground" />
-              </div>
-              <h1 className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-                EsyDocs
-              </h1>
-            </div>
-            
-            <nav className="hidden md:flex items-center space-x-6">
-              <a href="#features" className="text-muted-foreground hover:text-primary transition-colors">
-                Features
-              </a>
-              <a href="#pricing" className="text-muted-foreground hover:text-primary transition-colors">
-                Pricing
-              </a>
-              <a href="#contact" className="text-muted-foreground hover:text-primary transition-colors">
-                Contact
-              </a>
-              <ThemeToggle />
-            </nav>
-          </div>
-        </div>
-      </header>
-
+    <Layout showAdSpaces={false}>
       {/* Hero Section */}
-      <section className="py-20 px-4">
+      <section className="py-20 px-4 -mx-4">
         <div className="container mx-auto text-center">
           <h1 className="text-5xl md:text-7xl font-bold text-foreground mb-6">
             Transform Your{' '}
@@ -156,13 +127,13 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Main Content Area - 50% width on desktop */}
-      <main className="px-4 pb-20">
+      {/* Features Grid with Ad Layout */}
+      <div className="px-4 -mx-4">
         <div className="container mx-auto">
-          <div className="flex">
+          <div className="grid grid-cols-1 xl:grid-cols-4 gap-8">
             {/* Left Ad Space - 25% */}
-            <div className="hidden xl:block w-1/4 pr-8">
-              <div className="bg-gradient-card border border-border rounded-xl p-6 text-center h-96 flex items-center justify-center">
+            <div className="hidden xl:block">
+              <div className="bg-gradient-card border border-border rounded-xl p-6 text-center h-96 flex items-center justify-center sticky top-24">
                 <div className="text-muted-foreground">
                   <div className="w-16 h-16 bg-secondary rounded-lg mx-auto mb-4 flex items-center justify-center">
                     <span className="text-xs font-medium">AD</span>
@@ -172,8 +143,8 @@ export const Home: React.FC = () => {
               </div>
             </div>
 
-            {/* Features Grid - 50% */}
-            <div className="w-full xl:w-1/2">
+            {/* Features Grid - 50% on desktop, full width on mobile */}
+            <div className="xl:col-span-2">
               <div className="mb-12 text-center">
                 <h2 className="text-3xl font-bold text-foreground mb-4">
                   Choose Your Tool
@@ -183,7 +154,7 @@ export const Home: React.FC = () => {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 2xl:grid-cols-3 gap-6">
                 {features.map((feature) => (
                   <Link
                     key={feature.featureKey}
@@ -202,8 +173,8 @@ export const Home: React.FC = () => {
             </div>
 
             {/* Right Ad Space - 25% */}
-            <div className="hidden xl:block w-1/4 pl-8">
-              <div className="bg-gradient-card border border-border rounded-xl p-6 text-center h-96 flex items-center justify-center">
+            <div className="hidden xl:block">
+              <div className="bg-gradient-card border border-border rounded-xl p-6 text-center h-96 flex items-center justify-center sticky top-24">
                 <div className="text-muted-foreground">
                   <div className="w-16 h-16 bg-secondary rounded-lg mx-auto mb-4 flex items-center justify-center">
                     <span className="text-xs font-medium">AD</span>
@@ -214,9 +185,7 @@ export const Home: React.FC = () => {
             </div>
           </div>
         </div>
-      </main>
-
-      {/* Footer */}
-    </div>
+      </div>
+    </Layout>
   );
 };

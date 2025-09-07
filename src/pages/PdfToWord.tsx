@@ -1,121 +1,44 @@
-import React, { useState } from 'react';
-import { ArrowLeft, FileText, Upload, Download, CheckCircle } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
+import React from 'react';
+import { ArrowLeft, FileText } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useToast } from '@/hooks/use-toast';
+import { Layout } from '@/components/Layout';
+import { FileUpload } from '@/components/FileUpload';
 
 export const PdfToWord: React.FC = () => {
-  const [isProcessing, setIsProcessing] = useState(false);
-  const [isConverted, setIsConverted] = useState(false);
-  const { toast } = useToast();
-
-  const handleFileUpload = () => {
-    setIsProcessing(true);
-    // Simulate processing
-    setTimeout(() => {
-      setIsProcessing(false);
-      setIsConverted(true);
-      toast({
-        title: "Conversion Completed!",
-        description: "Your PDF has been successfully converted to Word format.",
-      });
-    }, 3000);
-  };
-
   return (
-    <div className="min-h-screen bg-background">
-      <header className="border-b border-border bg-background/80 backdrop-blur-sm sticky top-0 z-40">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link to="/" className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors">
-              <ArrowLeft className="w-5 h-5" />
-              <span>Back to Tools</span>
-            </Link>
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-                <FileText className="w-5 h-5 text-primary-foreground" />
-              </div>
-              <h1 className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-                PDF to Word
-              </h1>
+    <Layout>
+      <div className="text-center mb-8">
+        <div className="flex items-center justify-center gap-2 mb-4">
+          <Link to="/" className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors">
+            <ArrowLeft className="w-5 h-5" />
+            <span>Back to Tools</span>
+          </Link>
+          <span className="text-muted-foreground mx-4">/</span>
+          <div className="flex items-center space-x-2">
+            <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
+              <FileText className="w-5 h-5 text-primary-foreground" />
             </div>
-          </div>
-        </div>
-      </header>
-
-      <main className="container mx-auto px-4 py-12">
-        <div className="max-w-2xl mx-auto">
-          <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold text-foreground mb-4">
-              Convert PDF to Word
+            <h1 className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+              PDF to Word
             </h1>
-            <p className="text-xl text-muted-foreground">
-              Transform your PDF documents into editable Word files with perfect formatting preservation.
-            </p>
-          </div>
-
-          <Card className="p-8 bg-gradient-card border border-border">
-            {!isConverted ? (
-              <div className="space-y-6">
-                <div className="border-2 border-dashed border-border rounded-lg p-12 text-center hover:border-primary/50 transition-colors">
-                  <Upload className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
-                  <h3 className="text-lg font-semibold text-foreground mb-2">
-                    Choose PDF File
-                  </h3>
-                  <p className="text-muted-foreground mb-6">
-                    Drop your PDF file here or click to browse
-                  </p>
-                  <Button 
-                    onClick={handleFileUpload}
-                    disabled={isProcessing}
-                    className="w-full md:w-auto"
-                  >
-                    {isProcessing ? "Converting..." : "Select PDF File"}
-                  </Button>
-                </div>
-
-                <div className="text-sm text-muted-foreground space-y-2">
-                  <p>• Maximum file size: 50MB</p>
-                  <p>• Supported formats: PDF</p>
-                  <p>• Output format: DOCX</p>
-                </div>
-              </div>
-            ) : (
-              <div className="text-center space-y-6">
-                <CheckCircle className="w-16 h-16 text-primary mx-auto" />
-                <div>
-                  <h3 className="text-xl font-semibold text-foreground mb-2">
-                    Conversion Complete!
-                  </h3>
-                  <p className="text-muted-foreground">
-                    Your PDF has been successfully converted to Word format.
-                  </p>
-                </div>
-                <Button className="w-full md:w-auto">
-                  <Download className="w-4 h-4 mr-2" />
-                  Download Word File
-                </Button>
-              </div>
-            )}
-          </Card>
-
-          <div className="mt-8 text-center">
-            <p className="text-sm text-muted-foreground">
-              Need to convert another file?{' '}
-              <button
-                onClick={() => {
-                  setIsConverted(false);
-                  setIsProcessing(false);
-                }}
-                className="text-primary hover:underline"
-              >
-                Start over
-              </button>
-            </p>
           </div>
         </div>
-      </main>
-    </div>
+        
+        <h1 className="text-4xl font-bold text-foreground mb-4">
+          Convert PDF to Word
+        </h1>
+        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          Convert PDF documents to editable Word files with perfect formatting preservation.
+        </p>
+      </div>
+
+      <FileUpload
+        acceptedFormats=".pdf"
+        maxFileSize={50}
+        conversionType="pdfToWord"
+        title="Choose PDF File"
+        description="Drop your PDF file here or click to browse"
+      />
+    </Layout>
   );
 };
