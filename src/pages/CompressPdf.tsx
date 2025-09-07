@@ -24,7 +24,7 @@ export const CompressPdf: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="border-b border-border bg-background/80 backdrop-blur-sm sticky top-0 z-40">
+      {/* <header className="border-b border-border bg-background/80 backdrop-blur-sm sticky top-0 z-40">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors">
@@ -41,7 +41,7 @@ export const CompressPdf: React.FC = () => {
             </div>
           </div>
         </div>
-      </header>
+      </header> */}
 
       <main className="container mx-auto px-4 py-12">
         <div className="max-w-2xl mx-auto">

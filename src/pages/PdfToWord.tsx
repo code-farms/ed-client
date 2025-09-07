@@ -6,9 +6,9 @@ import { FileUpload } from '@/components/FileUpload';
 
 export const PdfToWord: React.FC = () => {
   return (
-    <>
+    <div className='flex flex-col'>
       <div className="text-center mb-8">
-        <div className="flex items-center justify-center gap-2 mb-4">
+        {/* <div className="flex items-center justify-center gap-2 mb-4">
           <Link to="/" className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors">
             <ArrowLeft className="w-5 h-5" />
             <span>Back to Tools</span>
@@ -22,7 +22,7 @@ export const PdfToWord: React.FC = () => {
               PDF to Word
             </h1>
           </div>
-        </div>
+        </div> */}
         
         <h1 className="text-4xl font-bold text-foreground mb-4">
           Convert PDF to Word
@@ -39,6 +39,6 @@ export const PdfToWord: React.FC = () => {
         title="Choose PDF File"
         description="Drop your PDF file here or click to browse"
       />
-    </>
+    </div>
   );
 };
